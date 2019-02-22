@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using BirthdayApp.Properties;
 using BirthdayApp.Tools;
 using BirthdayApp.Tools.Managers;
 
@@ -97,6 +92,7 @@ namespace BirthdayApp
 
             await Task.Run(() =>
             {
+                SetNothing();
                 DateTime birthday = Convert.ToDateTime(_birthday);
                 if (!CheckBirthday(birthday))
                 {
@@ -136,7 +132,18 @@ namespace BirthdayApp
                     return false;
                 }
             }
-            if (DateTime.Today.Year - birthday.Year >= 135)
+
+            int years = DateTime.Today.Year - birthday.Year;
+            if (DateTime.Today.Month < birthday.Month)
+            {
+                years--;
+            }
+            else if (DateTime.Today.Month == birthday.Month && DateTime.Today.Day < birthday.Day)
+            {
+                years--;
+            }
+
+            if (years > 135)
             {
                 MessageBox.Show("There must be a mistake. You can't be older than 135 years.");
                 return false;
@@ -229,6 +236,13 @@ namespace BirthdayApp
                 case 10: Animal = "Horse"; break;
                 case 11: Animal = "Goat"; break;
             }
+        }
+
+        private void SetNothing()
+        {
+            Animal = "";
+            Age = "";
+            Zodiac = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

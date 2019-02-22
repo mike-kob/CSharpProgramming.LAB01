@@ -2,8 +2,15 @@
 {
     public class User
     {
+        private string _birthday;
         private string _age;
-        private string _sign;
+        private string _zodiac;
+        private string _animal;
+
+        public string Birthday {
+            get { return _birthday; }
+            set { _birthday = value; }
+        }
 
         public string Age
         {
@@ -11,10 +18,16 @@
             set { _age = value; }
         }
 
-        public string Sign
+        public string Zodiac
         {
-            get { return _sign; }
-            set { _sign = value; }
+            get { return _zodiac; }
+            set { _zodiac = value; }
+        }
+
+        public string Animal
+        {
+            get { return _animal; }
+            set { _animal = value; }
         }
     }
 }

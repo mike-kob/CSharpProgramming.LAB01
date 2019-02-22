@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace BirthdayApp
+namespace BirthdayApp.Tools
 {
     public class RelayCommand<T> : ICommand
     {
